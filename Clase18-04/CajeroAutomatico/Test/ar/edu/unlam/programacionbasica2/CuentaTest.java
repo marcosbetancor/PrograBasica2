@@ -50,7 +50,7 @@ public class CuentaTest {
 		dineroExtraido = cuentaAExtraer.retirarDinero(dineroAExtraer);
 		
 		assertEquals(dineroAExtraer, dineroExtraido);
-		assertEquals(new Double(0.00), cuentaAExtraer.consultarSaldo());
+		assertEquals(new Double(100.00), cuentaAExtraer.consultarSaldo());
 		
 
 	}
