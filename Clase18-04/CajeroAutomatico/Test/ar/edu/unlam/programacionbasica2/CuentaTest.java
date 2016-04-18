@@ -7,24 +7,51 @@ import static org.junit.Assert.*;
 public class CuentaTest {
 	
 	@Test
+	public void testCrearCuentaVacia(){
+		Cuenta cuentavacia = new Cuenta();
+		
+		//OPCION 1
+		Double expected = new Double(0.0);
+		assertEquals(expected, cuentavacia.consultarSaldo());
+		//Opcion 2
+		assertEquals(new Double(0.0), cuentavacia.consultarSaldo());
+			
+	}
 	
+	@Test
+	public void testCrearCuentaConSaldoInicial(){
+		Cuenta cuentaconsaldo = new Cuenta(1, 500.0);
+		
+		//OPCION 1
+		Double expected = new Double(500.0);
+		assertEquals(expected, cuentaconsaldo.consultarSaldo());
+		//Opcion 2
+		assertEquals(new Double(500.0), cuentaconsaldo.consultarSaldo());
+			
+	}
+	
+	
+	@Test
 	
 	public void ingresarDineroALaCuenta(){
 
-		Cuenta cuentavacia= new Cuenta(1,0);
-		cuentavacia.depositarDinero(50);
-		assertNotEquals(0,cuentavacia.getSaldo());
+		Cuenta cuentavacia= new Cuenta();
+		cuentavacia.depositarDinero(50.0);
+		assertEquals(new Double(50.00),cuentavacia.getSaldo());
 	
 	}
 	
 	@Test
 	public void retirarDineroALaCuenta(){
 
-		Cuenta cuentaconsaldo = new Cuenta(2,500);
+		Double dineroAExtraer = new Double(100.0), dineroExtraido;
+		Cuenta cuentaAExtraer = new Cuenta(0,dineroAExtraer);
 		
-		cuentaconsaldo.retirarDinero(150);
+		dineroExtraido = cuentaAExtraer.retirarDinero(dineroAExtraer);
 		
-		assertEquals(350,cuentaconsaldo.getSaldo(), 0.01);
+		assertEquals(dineroAExtraer, dineroExtraido);
+		assertEquals(new Double(0.00), cuentaAExtraer.consultarSaldo());
+		
 
 	}
 
@@ -32,7 +59,7 @@ public class CuentaTest {
 	
 	public void consultarSaldo(){
 		
-		Cuenta cuentaconsaldo = new Cuenta(3,5434);
+		Cuenta cuentaconsaldo = new Cuenta(3,(double) 5434);
 		
 		assertEquals(5434, cuentaconsaldo.getSaldo(), 0.01);
 		

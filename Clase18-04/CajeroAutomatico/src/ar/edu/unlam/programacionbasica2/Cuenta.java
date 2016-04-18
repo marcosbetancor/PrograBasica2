@@ -1,45 +1,47 @@
 package ar.edu.unlam.programacionbasica2;
 
 public class Cuenta {
-	private int numerocuenta;
-	private float saldo;
+	private Integer numerocuenta;
+	private Double saldo;
+
+	public Cuenta (){
+		this.numerocuenta = 0;
+		this.saldo = 0.0;
+		
+	}
+		
 	
-public Cuenta (){
-	
-}
-	
-public Cuenta (int numerocuenta, float saldo){
+public Cuenta (Integer numerocuenta, Double saldo){
 	this.numerocuenta = numerocuenta;
 	this.saldo = saldo;
 	
 }
 	
-public void setSaldo(float saldo){
-	if( saldo >= 0)
-		this.saldo = saldo;
-	}
 
-public float getSaldo(){
+public Double getSaldo(){
 	return this.saldo;
-	}
-
-public void setNumeroCuenta(int numerocuenta){
-	this.numerocuenta = numerocuenta;
-	
 }
 
-public int getNumeroCuenta(){
+public Integer getNumeroCuenta(){
 	return this.numerocuenta;
 }
 
-public void depositarDinero(float deposito){
+public void depositarDinero(Double deposito){
 	this.saldo += deposito;
 }
 
-public void retirarDinero(float deposito){
-	this.saldo -= deposito;
+public Double retirarDinero(Double deposito){
+	if(this.saldo >= deposito){
+		this.saldo -= deposito;
+	} 
+	
+	return saldo;
 }
 
+public Double consultarSaldo(){
+	return (getSaldo());
+	
+}
 
 
 }
